@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>轻语记账隐私协议</title>
+<style>
+  :root {
+    --bg: #FFF7F1;
+    --card: #FFFFFF;
+    --ink: #4A4A4A;
+    --soft: #8A8A8A;
+    --mint: #6FC9A9;
+    --mint-deep: #3FA47E;
+    --line: #EFE6DC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141E19;
+      --card: #22302A;
+      --ink: #EDE7DC;
+      --soft: #8B958D;
+      --mint: #8AD8BC;
+      --mint-deep: #6FBFA0;
+      --line: #2C3A34;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* 双语：由 App 注入 data-lang（zh / en），非当前语言的段落整段隐藏 */
+  html[data-lang="zh"] .en { display: none !important; }
+  html[data-lang="en"] .zh { display: none !important; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 48px; }
+  h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .date { font-size: 13px; color: var(--soft); margin-bottom: 24px; }
+  .intro {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 14px;
+    color: var(--ink);
+    margin-bottom: 22px;
+  }
+  .intro b { color: var(--mint-deep); }
+  h2 {
+    font-size: 17px;
+    font-weight: 650;
+    margin: 26px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2::before {
+    content: "";
+    width: 4px;
+    height: 16px;
+    border-radius: 2px;
+    background: var(--mint-deep);
+    flex-shrink: 0;
+  }
+  p { font-size: 14px; color: var(--ink); margin-bottom: 10px; }
+  ul { margin: 0 0 10px 4px; list-style: none; }
+  li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+  li b { color: var(--mint-deep); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .card .t { font-size: 14px; font-weight: 650; margin-bottom: 3px; }
+  .card .t::before { content: "🔒 "; }
+  .card .d { font-size: 13px; color: var(--soft); }
+  .foot {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--soft);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="zh">轻语记账隐私协议</h1>
+  <h1 class="en">Chat Ledger Privacy Policy</h1>
+  <div class="date zh">生效日期：2026 年 9 月 9 日 · 最后更新：2026 年 9 月 19 日</div>
+  <div class="date en">Effective Sep 9, 2026 · Last updated Sep 19, 2026</div>
+
+  <div class="intro zh">
+    轻语记账（下称「本应用」）是一款<b>纯本地记账应用</b>。你的账单数据全部保存在你自己的设备上，
+    我们<b>不收集、不上传、不出售</b>你的任何数据。本协议用最直白的话告诉你数据如何被处理。
+  </div>
+  <div class="intro en">
+    Chat Ledger (the "App") is a <b>fully on-device bookkeeping app</b>. All of your ledger data stays on your
+    own device. We <b>do not collect, upload, or sell</b> any of your data. This policy explains, in plain
+    words, exactly how your data is handled.
+  </div>
+
+  <h2 class="zh">1. 数据收集与存储</h2>
+  <h2 class="en">1. Data Collection and Storage</h2>
+  <p class="zh">本应用不注册账号、不要求登录，你的所有数据（账单、分类、预算、账本、经营数据、聊天记录、设置）仅保存在设备的本地存储中。我们没有服务器保存你的账本，也无法访问你的数据。</p>
+  <p class="en">The App has no accounts and no sign-in. All of your data (transactions, categories, budgets, ledgers, business records, chat history, settings) is stored only in local storage on your device. We operate no server that holds your ledger and cannot access your data.</p>
+  <ul class="zh">
+    <li>账单与分类数据：保存在设备本地（App 沙盒内的文件与偏好设置）</li>
+    <li>聊天记录（轻聊）与轻宝记忆：保存在设备本地，规则引擎全离线运行</li>
+    <li>小票/账单照片：保存在 App 沙盒内，<b>不会写入系统相册</b></li>
+    <li>经营模式数据（商品、库存、销售、标签）：保存在设备本地</li>
+    <li>应用设置与主题：保存在设备本地</li>
+  </ul>
+  <ul class="en">
+    <li>Transactions and categories: stored locally (files and preferences inside the App sandbox)</li>
+    <li>Chat history and assistant memory: stored locally; the rules engine runs fully offline</li>
+    <li>Receipt/bill photos: stored inside the App sandbox, <b>never written to your system photo library</b></li>
+    <li>Business-mode data (products, stock, sales, tags): stored locally</li>
+    <li>App settings and appearance: stored locally</li>
+  </ul>
+  <p class="zh">本地数据默认以明文形式保存在 App 沙盒中（不额外加密），以确保读写的速度与稳定。若你开启了 iCloud 设备备份，上述本地数据会随 iOS 系统备份一并备份到你的 iCloud 账户（由 Apple 加密，我们无法访问）；可在「系统设置 → Apple ID → iCloud → 备份」中关闭。你也可以随时使用 App 内的「加密备份」导出后自行保管。</p>
+  <p class="en">Local data is stored in the App sandbox in plain form (not additionally encrypted) to keep reads and writes fast and reliable. If you have iCloud device backup enabled, this local data is included in your iOS backup to your own iCloud account (encrypted by Apple; we cannot access it). You can turn this off in Settings → Apple ID → iCloud → Backup. You may also export an encrypted backup from within the App and keep it yourself at any time.</p>
+
+  <h2 class="zh">2. 系统权限使用说明</h2>
+  <h2 class="en">2. System Permissions</h2>
+  <p class="zh">以下权限仅在你主动使用对应功能时请求，且仅用于完成该功能，不会用于其他目的：</p>
+  <p class="en">Each permission below is requested only when you actively use the matching feature, and is used only to perform that feature — never for anything else:</p>
+  <div class="card"><div class="t zh">麦克风 · 语音识别</div><div class="t en">Microphone · Speech Recognition</div>
+    <div class="d zh">用于「语音记一笔」与轻聊按住说话。本 App 优先使用系统<b>设备端识别</b>，语音与识别文本不出手机，且断网也能用；仅当你的设备不具备端上识别能力时，才由 Apple 系统语音服务处理（适用 Apple 隐私政策）。我们不会录音留存，也不会保存音频。</div>
+    <div class="d en">Used for voice entry and push-to-talk in chat. The App prefers the system's <b>on-device recognition</b>: audio and transcripts never leave your phone and voice works offline. Only if your device lacks on-device recognition is the audio handled by Apple's speech service (Apple's privacy policy applies). We never keep recordings or store audio.</div>
+  </div>
+  <div class="card"><div class="t zh">相机</div><div class="t en">Camera</div>
+    <div class="d zh">仅用于拍摄小票/账单照片与商品条码属性。照片保存在 App 沙盒内，不上传、不写入系统相册。</div>
+    <div class="d en">Used only to photograph receipts, bills, and product labels. Photos are stored inside the App sandbox; they are never uploaded and never written to your photo library.</div>
+  </div>
+  <div class="card"><div class="t zh">相册</div><div class="t en">Photo Library</div>
+    <div class="d zh">仅在你主动选择账单照片时读取。若你开启了「自动记账」，App 会在你按下侧边按钮/运行快捷指令时读取最新截图用于识别，识别完成后<b>立即删除</b>该截图副本；你也可以随时在系统设置中收回此权限。</div>
+    <div class="d en">Read only when you pick a bill photo yourself. If you enable Auto-Entry, the App reads your newest screenshots to recognize them when you press the Action Button or run the Shortcut, then <b>deletes that copy immediately</b> after recognition. You can revoke this permission at any time in system settings.</div>
+  </div>
+  <div class="card"><div class="t zh">定位</div><div class="t en">Location</div>
+    <div class="d zh">仅在你主动为账单添加地点时使用。为把坐标变成可读的店名，App 会通过 Apple 地图服务完成查询（适用 Apple 隐私政策）；<b>账单里只会保存店名文字</b>，不保存坐标，也不做轨迹记录。</div>
+    <div class="d en">Used only when you add a place to a transaction. To turn coordinates into a readable shop name, the App queries Apple's Maps service (Apple's privacy policy applies). <b>Only the shop name text is saved in the transaction</b> — never coordinates, and no location history is kept.</div>
+  </div>
+  <div class="card"><div class="t zh">面容 ID / 触控 ID</div><div class="t en">Face ID / Touch ID</div>
+    <div class="d zh">用于解锁「隐私保险柜」「应用锁」与「经营模式锁」。生物识别由系统安全隔区完成，App 只能收到「通过/未通过」，无法读取你的面部或指纹数据。</div>
+    <div class="d en">Used to unlock the Vault, App Lock, and Business Lock. Biometric matching happens in the system's Secure Enclave; the App only receives a pass/fail result and can never read your face or fingerprint data.</div>
+  </div>
+  <div class="card"><div class="t zh">通知</div><div class="t en">Notifications</div>
+    <div class="d zh">用于告诉你「这一笔已记好」以及预算超支提醒。通知内容在本机生成，不经任何服务器推送；可在系统设置中随时关闭。</div>
+    <div class="d en">Used to tell you a transaction was recorded and to warn about budget overruns. Notifications are generated on-device and are not pushed through any server. You can disable them in system settings at any time.</div>
+  </div>
+  <p class="zh">你可以在系统设置中随时关闭任何权限；关闭后对应功能不可用，但其余功能与你的数据不受影响。</p>
+  <p class="en">You may revoke any permission in system settings at any time. The related feature stops working, but the rest of the App and your data are unaffected.</p>
+
+  <h2 class="zh">3. 本地 AI 与小票识别</h2>
+  <h2 class="en">3. On-Device AI and Receipt Recognition</h2>
+  <p class="zh">小票扫描使用 RapidOCR（PaddleOCR 优化版）本地离线识别引擎，识别过程<b>完全在设备上完成，零联网</b>，小票照片与文字不会离开你的设备。</p>
+  <p class="en">Receipt scanning uses RapidOCR (an optimized PaddleOCR) running entirely <b>on your device, with zero network access</b>. Receipt images and text never leave your device.</p>
+  <p class="zh">「轻聊」的记账解析、自动记账的金额/商户提取、智能分类，全部由本机规则引擎完成；在支持 Apple 智能的设备上，可能额外使用系统<b>设备端模型</b>做辅助理解（同样在本机运行）。以上过程均不向任何第三方 AI 服务发送数据，也不在任何服务器上保留数据。</p>
+  <p class="en">Chat parsing, amount/merchant extraction in Auto-Entry, and smart categorization all run in a local rules engine. On devices that support Apple Intelligence, an additional <b>on-device system model</b> may assist with understanding (also running locally). None of this sends data to any third-party AI service, and nothing is retained on any server.</p>
+
+  <h2 class="zh">4. 自动记账 · 灵动岛 · 快捷指令</h2>
+  <h2 class="en">4. Auto-Entry, Dynamic Island, and Shortcuts</h2>
+  <ul class="zh">
+    <li><b>自动记账</b>：由你主动触发（侧边按钮 / 快捷指令 / 灵动岛），读取你提供的截图或剪贴板图片，在本机完成识别后入账。<b>剪贴板内容读取后即刻清空</b>；截图副本识别完成后立即删除，不会长期留存。</li>
+    <li><b>锁屏与灵动岛</b>：识别过程中，金额、商户名与状态会显示在锁屏与灵动岛卡片上，方便你确认。若你不希望这些信息出现在锁屏，可在「系统设置 → 面容 ID 与密码 → 锁屏时允许访问」中关闭通知预览，或不使用该功能。</li>
+    <li><b>快捷指令 / Siri</b>：你可以用系统「快捷指令」把记账动作接进自己的自动化流程。该动作在你的设备上运行，处理的数据来自你选择的文件与截图。</li>
+  </ul>
+  <ul class="en">
+    <li><b>Auto-Entry</b>: triggered by you (Action Button / Shortcut / Dynamic Island). It reads the screenshot or clipboard image you provide, recognizes it on-device, and records the transaction. <b>The clipboard is cleared right after it is read</b>, and the screenshot copy is deleted immediately after recognition — nothing is retained.</li>
+    <li><b>Lock screen &amp; Dynamic Island</b>: while recognizing, the amount, merchant, and status are shown on the lock screen and Dynamic Island card so you can confirm. If you would rather not show them on the lock screen, turn off notification previews in Settings → Face ID &amp; Passcode → Allow Access When Locked, or simply don't use the feature.</li>
+    <li><b>Shortcuts / Siri</b>: you can wire bookkeeping into your own automations with the system Shortcuts app. The action runs on your device and processes only the files and screenshots you choose.</li>
+  </ul>
+
+  <h2 class="zh">5. 隐私保险柜 · 应用锁 · 经营锁</h2>
+  <h2 class="en">5. Vault, App Lock, and Business Lock</h2>
+  <p class="zh">你可以把私密账单移入「隐私保险柜」，查看时需要面容 ID / 触控 ID 验证；也可以为整个 App 或经营模式单独加锁。以上数据同样仅保存在设备本地。「私密账本」的加密标记作用于<b>导出</b>：导出时生成 AES-256 加密文件（密钥保存在系统钥匙串，仅本机可用，换机或重装后无法解密）。</p>
+  <p class="en">You can move private transactions into the Vault, which requires Face ID / Touch ID to open, and you can lock the whole App or just Business Mode. This data is likewise stored only on your device. The "encrypted ledger" flag applies to <b>export</b>: exports are written as AES-256 encrypted files whose key lives in the system Keychain, usable only on this device (it cannot be decrypted after switching devices or reinstalling).</p>
+
+  <h2 class="zh">6. 备份 · 快照 · 导入导出</h2>
+  <h2 class="en">6. Backup, Snapshots, and Import/Export</h2>
+  <p class="zh">「本地备份 / 导出」由你主动发起，可导出 JSON 完整备份、CSV 表格、PDF 报表或 AES-256 加密备份，保存到你的设备文件或通过系统分享面板发送给别人；也可以导入 CSV / XLSX / TXT 账单文件。历史快照（自动与手动）保存在 App 沙盒内，附件以 AES-256-GCM 加密，且<b>不参与 iCloud 备份</b>。</p>
+  <p class="en">Local backup and export are started by you: full JSON backup, CSV table, PDF report, or an AES-256 encrypted backup, saved to your device or shared through the system share sheet. You can also import CSV / XLSX / TXT bill files. History snapshots (automatic and manual) live inside the App sandbox, with attachments encrypted using AES-256-GCM, and are <b>excluded from iCloud backup</b>.</p>
+  <p class="zh">提示：App 沙盒内的文件夹在系统「文件」App 中可见（便于你取用导出的备份与照片）。如果你不希望他人通过「文件」App 看到这些内容，可关闭系统设置中的「显示文件」相关选项或为设备设置锁屏密码。</p>
+  <p class="en">Note: the App's sandbox folder is visible in the system Files app so you can retrieve your exports and photos. If you would rather others not see this content through Files, adjust the relevant option in system settings or protect your device with a passcode.</p>
+
+  <h2 class="zh">7. 会员与内购</h2>
+  <h2 class="en">7. Membership and In-App Purchases</h2>
+  <p class="zh">会员（月度 / 年度 / 终身买断）通过 Apple 内购完成，支付与订阅管理全部由 App Store 处理，我们<b>不接触也不保存你的支付信息</b>。App 只向 App Store 验证购买凭证以解锁功能；卸载重装后可用「恢复购买」找回。会员权益同样全部在本机运行。</p>
+  <p class="en">Membership (monthly / yearly / lifetime) is sold through Apple In-App Purchase. Payment and subscription management are handled entirely by the App Store; we <b>never see or store your payment details</b>. The App only verifies the purchase with the App Store to unlock features, and "Restore Purchases" recovers your membership after reinstalling. All membership features also run entirely on-device.</p>
+
+  <h2 class="zh">8. 关于「零网络」的准确说明</h2>
+  <h2 class="en">8. What "Zero Network" Means Precisely</h2>
+  <p class="zh">App 本身没有服务器，也不向我们的任何服务发送数据。仅以下三类由 Apple 系统提供的联网行为可能发生：① App Store（购买、恢复购买、验证订阅）；② Apple 地图（仅当你添加地点时把坐标换成店名）；③ Apple 系统语音服务（仅当你的设备不具备端上语音识别能力时）。除此之外，账单、照片、聊天与经营数据全程不经过网络。</p>
+  <p class="en">The App has no server of its own and sends nothing to any service we operate. Only three kinds of network activity, all provided by Apple system frameworks, can occur: (1) the App Store (purchases, restore, entitlement verification); (2) Apple Maps (only when you add a place, to turn coordinates into a shop name); (3) Apple's speech service (only if your device lacks on-device speech recognition). Beyond these, your transactions, photos, chats, and business data never touch the network.</p>
+
+  <h2 class="zh">9. 删除你的数据</h2>
+  <h2 class="en">9. Deleting Your Data</h2>
+  <p class="zh">在「我的 → 清除数据」中可一键清空全部账单与设置；卸载本应用也会删除全部本地数据（若你在 iCloud 备份中保留了副本，需另行在 iCloud 中删除）。删除后不可恢复，请在操作前导出备份。</p>
+  <p class="en">"Settings → Clear Data" wipes all transactions and settings in one tap, and uninstalling the App deletes all local data (if a copy remains in your iCloud backup, delete it from iCloud separately). Deletion is irreversible — export a backup first.</p>
+
+  <h2 class="zh">10. 儿童隐私</h2>
+  <h2 class="en">10. Children's Privacy</h2>
+  <p class="zh">本应用面向所有年龄用户，不收集任何个人信息，也不包含第三方广告与追踪。</p>
+  <p class="en">The App is suitable for all ages. It collects no personal information and contains no third-party ads or tracking.</p>
+
+  <h2 class="zh">11. 本协议的更新</h2>
+  <h2 class="en">11. Changes to This Policy</h2>
+  <p class="zh">本协议会随功能变化更新，最新版本随 App 一同发布，并在本页标注「最后更新」日期。新功能涉及新的数据处理方式时，我们会先在此说明再随版本上线，不会追溯改变你既有数据的处理方式。</p>
+  <p class="en">This policy is updated as the App changes. The current version ships with the App and carries the "last updated" date above. When a new feature involves new data handling, we describe it here before that version ships, and we never retroactively change how your existing data is handled.</p>
+
+  <h2 class="zh">12. 联系我们</h2>
+  <h2 class="en">12. Contact Us</h2>
+  <p class="zh">如对本协议或隐私处理有任何疑问，欢迎通过 App Store 页面留言联系我们，轻宝会认真对待每一条反馈。</p>
+  <p class="en">If you have any question about this policy or how your data is handled, leave us a note on our App Store page — we read every piece of feedback.</p>
+
+  <div class="foot zh">本协议页面随应用离线内置，无需联网即可查看。<br>轻语记账 · 按一下，说句话，账就记好 💚</div>
+  <div class="foot en">This page is bundled with the App and readable offline.<br>Chat Ledger · Tap, speak, and it's recorded 💚</div>
+</div>
+<script>
+  // 语言注入：App 加载完成后调用 qySetLang('zh'|'en')；网页单独打开时按浏览器语言兜底
+  window.qySetLang = function (lang) {
+    document.documentElement.setAttribute('data-lang', lang === 'en' ? 'en' : 'zh');
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
+  };
+  (function () {
+    var l = (navigator.language || 'zh').toLowerCase();
+    window.qySetLang(l.indexOf('zh') === 0 ? 'zh' : 'en');
+  })();
+</script>
+</body>
+</html>
