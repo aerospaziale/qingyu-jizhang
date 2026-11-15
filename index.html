@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>轻语记账 · 按一下，说句话，账就记好</title>
+<meta name="description" content="轻语记账是一款纯本地的智能记账 App：语音、聊天、截图都能记账，金额分类自动识别；无账号、无云端、无广告，账单只保存在你的 iPhone 里。">
+<meta property="og:title" content="轻语记账 · 按一下，说句话，账就记好">
+<meta property="og:description" content="语音、聊天、截图都能记账。无账号、无云端、无广告，账单只保存在你的 iPhone 里。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://aerospaziale.github.io/qingyu-jizhang/">
+<meta property="og:image" content="https://aerospaziale.github.io/qingyu-jizhang/assets/icon.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root {
+    --bg: #FFF9F2;
+    --bg-soft: #FBF1E6;
+    --card: #FFFFFF;
+    --ink: #3E3A35;
+    --soft: #7B746B;
+    --line: #F0E6DA;
+    --mint: #5DBB98;
+    --mint-deep: #2F8B6E;
+    --mint-soft: #E8F4EE;
+    --gold: #F2B84B;
+    --shadow: 0 2px 4px rgba(62, 58, 53, .03), 0 18px 50px rgba(62, 58, 53, .07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141E19;
+      --bg-soft: #1A2620;
+      --card: #22302A;
+      --ink: #EDE7DC;
+      --soft: #9BA79F;
+      --line: #2C3A34;
+      --mint: #8AD8BC;
+      --mint-deep: #6FBFA0;
+      --mint-soft: #24362E;
+      --gold: #F3C56B;
+      --shadow: 0 2px 4px rgba(0, 0, 0, .16), 0 18px 50px rgba(0, 0, 0, .22);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--mint-deep); text-decoration: none; }
+  a:hover { opacity: .82; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+  /* ---------- 导航 ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(150%) blur(16px);
+    -webkit-backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; gap: 18px; height: 66px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 750; font-size: 17px; letter-spacing: .2px; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  .nav-links { display: flex; align-items: center; gap: 26px; margin-left: auto; font-size: 14px; }
+  .nav-links a { color: var(--soft); font-weight: 550; }
+  .nav-links a:hover { color: var(--mint-deep); opacity: 1; }
+  .nav-cta {
+    color: var(--mint-deep) !important; background: var(--mint-soft);
+    padding: 7px 14px; border-radius: 999px; font-weight: 650 !important;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 74px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.08fr .92fr; gap: 48px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--mint-deep); background: var(--mint-soft);
+    border: 1px solid color-mix(in srgb, var(--mint) 26%, transparent);
+    font-size: 13px; font-weight: 650; letter-spacing: .3px;
+    padding: 5px 12px; border-radius: 999px; margin-bottom: 22px;
+  }
+  .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+  h1 { font-size: clamp(38px, 5.4vw, 64px); line-height: 1.14; letter-spacing: -.02em; font-weight: 850; }
+  h1 .accent { color: var(--mint-deep); }
+  .hero p.lead { margin-top: 22px; font-size: clamp(16px, 1.7vw, 19px); color: var(--soft); max-width: 560px; line-height: 1.75; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .tag {
+    font-size: 13px; color: var(--soft); background: var(--card);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px;
+  }
+  .tag b { color: var(--ink); font-weight: 650; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: 999px; padding: 13px 24px; font-size: 15px; font-weight: 700;
+    border: 1px solid transparent; transition: transform .16s ease, opacity .16s ease;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: .92; }
+  .btn-primary { background: linear-gradient(135deg, var(--mint), var(--mint-deep)); color: #fff; box-shadow: 0 10px 24px color-mix(in srgb, var(--mint) 30%, transparent); }
+  .btn-ghost { background: var(--card); border-color: var(--line); color: var(--ink); }
+  .hero-note { margin-top: 14px; font-size: 13px; color: var(--soft); }
+
+  .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 430px; }
+  .blob {
+    position: absolute; inset: 6% 0 2% 4%;
+    background: radial-gradient(circle at 62% 36%, color-mix(in srgb, var(--mint) 20%, var(--bg)) 0%, color-mix(in srgb, var(--gold) 13%, var(--bg)) 58%, transparent 72%);
+    border-radius: 44% 56% 58% 42% / 52% 42% 58% 48%;
+    filter: blur(2px);
+  }
+  .app-icon {
+    position: relative; width: 116px; height: 116px; border-radius: 27px;
+    box-shadow: 0 22px 44px rgba(47, 139, 110, .22);
+    margin-bottom: 188px; margin-right: 206px;
+  }
+  .mascot { position: relative; width: min(330px, 72vw); filter: drop-shadow(0 24px 36px rgba(47, 139, 110, .16)); }
+  .bubble {
+    position: absolute; right: 0; bottom: 28px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 18px 18px 18px 6px;
+    box-shadow: var(--shadow); padding: 13px 16px; font-size: 14px; line-height: 1.55;
+    max-width: 220px;
+  }
+  .bubble .row { display: flex; align-items: center; gap: 8px; }
+  .bubble .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--mint-soft); display: grid; place-items: center; font-size: 15px; }
+  .bubble .amount { margin-left: auto; font-weight: 750; color: var(--ink); white-space: nowrap; }
+  .bubble .sub { color: var(--soft); font-size: 12px; margin-top: 2px; }
+
+  /* ---------- 通用区块 ---------- */
+  section { padding: 62px 0; }
+  .section-head { max-width: 680px; margin-bottom: 34px; }
+  .kicker { font-size: 13px; font-weight: 700; letter-spacing: .13em; color: var(--mint-deep); text-transform: uppercase; margin-bottom: 10px; }
+  h2 { font-size: clamp(26px, 3.3vw, 38px); line-height: 1.24; letter-spacing: -.015em; font-weight: 800; }
+  .section-head p { margin-top: 12px; color: var(--soft); font-size: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 24px;
+    padding: 28px; box-shadow: var(--shadow);
+  }
+  .card .ic {
+    width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--mint-soft); font-size: 22px; margin-bottom: 18px;
+  }
+  .card h3 { font-size: 18px; font-weight: 750; margin-bottom: 8px; }
+  .card p { color: var(--soft); font-size: 14.5px; line-height: 1.72; }
+  .card .kbd {
+    display: inline-block; margin-top: 12px; font-size: 12px; color: var(--mint-deep);
+    background: var(--mint-soft); border-radius: 7px; padding: 3px 8px;
+  }
+
+  .grid-6 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .mini {
+    display: flex; gap: 14px; align-items: flex-start; background: var(--card);
+    border: 1px solid var(--line); border-radius: 19px; padding: 19px 20px;
+  }
+  .mini .mi { flex: none; width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; background: var(--mint-soft); font-size: 17px; }
+  .mini b { display: block; font-size: 15px; margin-bottom: 2px; }
+  .mini span { color: var(--soft); font-size: 13px; line-height: 1.6; }
+
+  /* ---------- 生意 / 报表 ---------- */
+  .split { display: grid; grid-template-columns: 1fr .82fr; gap: 54px; align-items: center; }
+  .split .section-head { margin-bottom: 22px; }
+  .feature-list { display: grid; gap: 12px; margin-top: 24px; }
+  .fline { display: flex; gap: 12px; align-items: flex-start; font-size: 14.5px; color: var(--soft); }
+  .fline .tick { flex: none; width: 21px; height: 21px; margin-top: 3px; border-radius: 50%; background: var(--mint-soft); color: var(--mint-deep); display: grid; place-items: center; font-size: 12px; font-weight: 800; }
+  .fline b { color: var(--ink); font-weight: 650; }
+  .phone {
+    position: relative; width: min(300px, 100%); margin: 0 auto; border-radius: 44px;
+    padding: 10px; background: #171B18; box-shadow: 0 34px 70px rgba(23, 27, 24, .24);
+  }
+  .phone .screen { border-radius: 35px; overflow: hidden; background: #EFF6F1; }
+  .phone img { width: 100%; }
+  .phone::after {
+    content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 86px; height: 24px; background: #171B18; border-radius: 999px;
+  }
+
+  /* ---------- 隐私 ---------- */
+  .privacy-card {
+    background: linear-gradient(135deg, #1E3A2F, #2F8B6E 120%);
+    color: #F4EFE6; border-radius: 30px; padding: clamp(30px, 5vw, 54px);
+    box-shadow: 0 26px 60px rgba(31, 73, 57, .26);
+    display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center;
+  }
+  .privacy-card .kicker { color: #A8E3CB; }
+  .privacy-card h2 { color: #fff; }
+  .privacy-card p { color: rgba(244, 239, 230, .76); margin-top: 14px; font-size: 15px; }
+  .privacy-points { display: grid; gap: 12px; }
+  .pp {
+    display: flex; gap: 12px; align-items: flex-start; font-size: 14px;
+    color: rgba(244, 239, 230, .86); background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .12); border-radius: 15px; padding: 13px 15px;
+  }
+  .pp .tick { color: #A8E3CB; font-weight: 800; }
+  .privacy-card .link { display: inline-block; margin-top: 20px; color: #C4F0DD; font-weight: 650; font-size: 14px; }
+
+  /* ---------- 会员 ---------- */
+  .member-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; max-width: 720px; }
+  .chip { font-size: 12.5px; color: var(--soft); border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 5px 11px; }
+  .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+  .plan { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px; }
+  .plan.recommend { border: 2px solid var(--mint); box-shadow: 0 18px 44px color-mix(in srgb, var(--mint) 18%, transparent); }
+  .plan .badge { position: absolute; top: -12px; right: 20px; background: var(--mint-deep); color: #fff; font-size: 11.5px; font-weight: 700; border-radius: 999px; padding: 4px 11px; }
+  .plan .name { font-size: 14px; color: var(--soft); font-weight: 650; }
+  .plan .price { font-size: 33px; font-weight: 850; letter-spacing: -.02em; margin: 6px 0 2px; }
+  .plan .price small { font-size: 14px; font-weight: 600; color: var(--soft); }
+  .plan .desc { font-size: 13px; color: var(--soft); }
+  .plan ul { list-style: none; margin-top: 16px; display: grid; gap: 7px; font-size: 13px; color: var(--soft); }
+  .plan li::before { content: "✓ "; color: var(--mint-deep); font-weight: 800; }
+  .fineprint { margin-top: 18px; font-size: 12.5px; color: var(--soft); }
+  .fineprint a { margin-right: 12px; }
+
+  /* ---------- 支持 CTA ---------- */
+  .cta-card {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    background: var(--card); border: 1px solid var(--line); border-radius: 26px;
+    padding: 32px 36px; box-shadow: var(--shadow);
+  }
+  .cta-card h2 { font-size: clamp(22px, 2.6vw, 30px); }
+  .cta-card p { color: var(--soft); font-size: 14.5px; margin-top: 6px; }
+
+  footer { border-top: 1px solid var(--line); padding: 34px 0 46px; margin-top: 34px; }
+  footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  footer .brand { font-size: 14px; }
+  footer .brand img { width: 26px; height: 26px; border-radius: 7px; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--soft); }
+  .copyright { font-size: 12.5px; color: var(--soft); }
+
+  @media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+    .hero { padding-top: 50px; }
+    .hero-visual { min-height: 360px; }
+    .app-icon { margin-bottom: 150px; margin-right: 170px; }
+    .grid-3, .grid-6, .plans { grid-template-columns: 1fr 1fr; }
+    .split { grid-template-columns: 1fr; gap: 34px; }
+    .privacy-card { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 620px) {
+    .wrap { width: calc(100% - 32px); }
+    .nav-links { gap: 16px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .grid-3, .grid-6, .plans { grid-template-columns: 1fr; }
+    .hero-visual { min-height: 330px; }
+    .app-icon { width: 88px; height: 88px; border-radius: 21px; margin-bottom: 136px; margin-right: 128px; }
+    .bubble { right: 0; bottom: 10px; max-width: 190px; font-size: 13px; }
+    section { padding: 46px 0; }
+    .card { padding: 23px; }
+    .cta-card { padding: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="轻语记账图标"><span>轻语记账</span></a>
+    <nav class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#privacy">隐私</a>
+      <a href="#member">会员</a>
+      <a class="nav-cta" href="support.html">技术支持</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">本地智能记账 · iPhone</div>
+        <h1>按一下，说句话，<br><span class="accent">账就记好。</span></h1>
+        <p class="lead">语音、聊天、截图，三种方式随手记。轻宝会自动识别金额、分类和备注——不用登录，没有云端，账单只留在你的手机里。</p>
+        <div class="hero-tags">
+          <span class="tag"><b>无账号</b> · 打开即用</span>
+          <span class="tag"><b>无云端</b> · 数据在本机</span>
+          <span class="tag"><b>无广告</b> · 专心记账</span>
+        </div>
+        <div class="hero-actions">
+          <span class="btn btn-primary">App Store 即将上架</span>
+          <a class="btn btn-ghost" href="support.html">查看使用帮助</a>
+        </div>
+        <div class="hero-note">支持 iPhone · iOS 17 及以上 · 免费可用</div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="blob"></div>
+        <img class="app-icon" src="assets/icon.png" alt="">
+        <img class="mascot" src="assets/qingbao.png" alt="">
+        <div class="bubble">
+          <div class="row"><span class="dot">🧋</span><span>餐饮 · 奶茶</span><span class="amount">-¥20.00</span></div>
+          <div class="sub">说一句，就已经记好了 ✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Three ways to record</div>
+        <h2>记账，不用再正襟危坐。</h2>
+        <p>把最麻烦的输入交给轻宝：说一句、聊一句，或者直接丢一张截图。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ic">🎙️</div>
+          <h3>语音快记</h3>
+          <p>按住说一句「午饭32，打车50」，一口气说的多笔账单会自动拆分。金额、分类、备注，一次到位。</p>
+          <span class="kbd">说完自动结束</span>
+        </article>
+        <article class="card">
+          <div class="ic">💬</div>
+          <h3>聊天记账</h3>
+          <p>像和朋友聊天一样输入「奶茶20」，账就记好了。还能问「这个月花了多少」「帮我找奶茶账单」。</p>
+          <span class="kbd">会记账，也会查账</span>
+        </article>
+        <article class="card">
+          <div class="ic">📸</div>
+          <h3>截图自动记账</h3>
+          <p>复制账单截图，或用侧边按钮、快捷指令、灵动岛唤起。本机识别金额与商户，确认即入账。</p>
+          <span class="kbd">截图不离开设备</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="kicker">Everyday details</div>
+        <h2>越用越顺手的日常。</h2>
+        <p>从第一笔到第十万笔，分类、搜索、预算和统计都在本机完成。</p>
+      </div>
+      <div class="grid-6">
+        <div class="mini"><span class="mi">🪄</span><div><b>智能分类</b><span>根据备注自动归类；没有合适分类时自动新建，下次直接复用。</span></div></div>
+        <div class="mini"><span class="mi">🔎</span><div><b>一句话搜索</b><span>按关键词、金额区间、日期查账单，输入即出结果。</span></div></div>
+        <div class="mini"><span class="mi">🎯</span><div><b>预算与提醒</b><span>总预算加分类子预算，超支时温和提醒，不制造焦虑。</span></div></div>
+        <div class="mini"><span class="mi">📚</span><div><b>多账本</b><span>生活、工作、家庭分开记，各自独立统计，互不打扰。</span></div></div>
+        <div class="mini"><span class="mi">📊</span><div><b>统计与报表</b><span>收支趋势、分类排行、周报月报，还能导出 PDF 报表。</span></div></div>
+        <div class="mini"><span class="mi">💳</span><div><b>资产账户</b><span>现金、微信、支付宝、银行卡统一管理，支持多币种。</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <div class="section-head">
+          <div class="kicker">For small business</div>
+          <h2>小店和自由职业者，也够用。</h2>
+          <p>不只是个人流水账。经营模式和高级报表，把生意里的每一笔也算得明明白白。</p>
+        </div>
+        <div class="feature-list">
+          <div class="fline"><span class="tick">✓</span><span><b>经营模式</b>：商品、库存、销售台账、利润报表，卖出自动联动记账。</span></div>
+          <div class="fline"><span class="tick">✓</span><span><b>账单导入</b>：微信、支付宝、银行导出的 CSV / XLSX / TXT 文件，本机解析批量入账。</span></div>
+          <div class="fline"><span class="tick">✓</span><span><b>备份与导出</b>：JSON、CSV、PDF 与 AES-256 加密备份，换机、存档都安心。</span></div>
+          <div class="fline"><span class="tick">✓</span><span><b>隐私保险柜</b>：面容 ID 解锁私密账单；应用锁和经营锁，守护整个 App。</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="phone">
+          <div class="screen"><img src="assets/report.jpg" alt="轻语记账经营利润报表界面"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <div class="privacy-card">
+        <div>
+          <div class="kicker">Privacy first</div>
+          <h2>账单，只属于你。</h2>
+          <p>轻语记账没有账号体系，也没有云端服务器。账单、分类、预算、聊天记录和经营数据，全部保存在本机。</p>
+          <a class="link" href="privacy.html">阅读隐私政策 →</a>
+        </div>
+        <div class="privacy-points">
+          <div class="pp"><span class="tick">✓</span><span>不用注册、不用登录，打开就能记。</span></div>
+          <div class="pp"><span class="tick">✓</span><span>不上传、不收集、不出售你的任何账单数据。</span></div>
+          <div class="pp"><span class="tick">✓</span><span>语音优先使用设备端识别；只有添加地点时，才会通过 Apple 地图把坐标变成店名。</span></div>
+          <div class="pp"><span class="tick">✓</span><span>核心记账功能断网也能用，没有广告打扰。</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="member">
+    <div class="wrap">
+      <div class="member-top">
+        <div class="section-head" style="margin-bottom:0">
+          <div class="kicker">Free &amp; Premium</div>
+          <h2>免费就能好好记账。</h2>
+          <p>语音快记、聊天记账、截图自动记账等核心功能，免费使用，无广告。</p>
+        </div>
+      </div>
+      <div class="chips" style="margin-top:22px">
+        <span class="chip">多账本</span><span class="chip">高级报表 + PDF</span><span class="chip">账单导入</span>
+        <span class="chip">自定义分类</span><span class="chip">智能分类</span><span class="chip">子预算与预警</span>
+        <span class="chip">无限快照</span><span class="chip">应用锁 + 经营锁</span><span class="chip">私密账本</span>
+        <span class="chip">经营模式</span><span class="chip">批量操作</span><span class="chip">侧边按钮速记</span><span class="chip">三档字号</span>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="name">月度会员</div>
+          <div class="price">¥9.9<small> / 月</small></div>
+          <div class="desc">按月订阅，随时取消</div>
+          <ul><li>解锁全部 13 项会员功能</li><li>所有功能本机运行</li><li>可随时在系统设置中取消</li></ul>
+        </div>
+        <div class="plan recommend">
+          <div class="badge">更划算</div>
+          <div class="name">年度会员</div>
+          <div class="price">¥89<small> / 年</small></div>
+          <div class="desc">约 ¥7.4 / 月，立省 ¥29.8</div>
+          <ul><li>解锁全部 13 项会员功能</li><li>比月付省 25%</li><li>可随时在系统设置中取消</li></ul>
+        </div>
+        <div class="plan">
+          <div class="name">终身买断</div>
+          <div class="price">¥169<small> 一次付费</small></div>
+          <div class="desc">永久使用，不自动续费</div>
+          <ul><li>解锁全部 13 项会员功能</li><li>一次付费，永久有效</li><li>换机后可用「恢复购买」找回</li></ul>
+        </div>
+      </div>
+      <p class="fineprint">订阅与买断均通过 Apple 内购完成，价格以 App 内实际显示为准。订阅会在当前周期结束前 24 小时自动续订，可在系统设置中随时取消。<a href="privacy.html">隐私政策</a><a href="terms.html">用户协议</a></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-card">
+        <div>
+          <h2>遇到问题，或想要新功能？</h2>
+          <p>查看常见问题，或直接给轻宝留言。每一条反馈都会被认真对待。</p>
+        </div>
+        <a class="btn btn-primary" href="support.html">前往技术支持 →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt=""><span>轻语记账</span></a>
+    <div class="foot-links">
+      <a href="support.html">技术支持</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="terms.html">用户协议</a>
+    </div>
+    <div class="copyright">© 2026 轻语记账 · 账单只属于你</div>
+  </div>
+</footer>
+
+</body>
+</html>
