@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技术支持 · 轻语记账</title>
+<meta name="description" content="轻语记账技术支持：常见问题、自动记账设置、数据备份与恢复、会员与订阅帮助。">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root {
+    --bg: #FFF9F2;
+    --card: #FFFFFF;
+    --ink: #3E3A35;
+    --soft: #7B746B;
+    --line: #F0E6DA;
+    --mint: #5DBB98;
+    --mint-deep: #2F8B6E;
+    --mint-soft: #E8F4EE;
+    --shadow: 0 2px 4px rgba(62, 58, 53, .03), 0 18px 50px rgba(62, 58, 53, .07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141E19; --card: #22302A; --ink: #EDE7DC; --soft: #9BA79F;
+      --line: #2C3A34; --mint: #8AD8BC; --mint-deep: #6FBFA0; --mint-soft: #24362E;
+      --shadow: 0 2px 4px rgba(0,0,0,.16), 0 18px 50px rgba(0,0,0,.22);
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--ink); line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--mint-deep); text-decoration: none; }
+  a:hover { opacity: .82; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: min(860px, calc(100% - 40px)); margin: 0 auto; }
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(150%) blur(16px); -webkit-backdrop-filter: saturate(150%) blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; gap: 14px; height: 66px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 750; font-size: 17px; }
+  .brand img { width: 34px; height: 34px; border-radius: 9px; }
+  .nav-links { display: flex; gap: 22px; margin-left: auto; font-size: 14px; }
+  .nav-links a { color: var(--soft); font-weight: 550; }
+
+  main { padding: 52px 0 30px; }
+  .page-head { margin-bottom: 30px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; color: var(--mint-deep);
+    background: var(--mint-soft); border: 1px solid color-mix(in srgb, var(--mint) 26%, transparent);
+    font-size: 13px; font-weight: 650; padding: 5px 12px; border-radius: 999px; margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--mint); }
+  h1 { font-size: clamp(32px, 5vw, 44px); line-height: 1.2; letter-spacing: -.02em; font-weight: 850; }
+  .page-head p { color: var(--soft); margin-top: 12px; font-size: 16px; max-width: 620px; }
+
+  .contact {
+    display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; margin-bottom: 34px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 24px; box-shadow: var(--shadow);
+  }
+  .card h2 { font-size: 18px; margin-bottom: 8px; }
+  .card p { font-size: 14px; color: var(--soft); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    border-radius: 999px; padding: 11px 20px; font-size: 14px; font-weight: 700;
+    border: 1px solid transparent; margin-top: 16px; color: #fff;
+    background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+    box-shadow: 0 8px 20px color-mix(in srgb, var(--mint) 28%, transparent);
+  }
+  .btn:hover { opacity: .92; }
+  .meta { font-size: 13px; color: var(--soft); }
+  .meta b { color: var(--ink); }
+
+  .faq-head { margin: 34px 0 16px; display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+  .faq-head h2 { font-size: 24px; font-weight: 800; }
+  .faq-head span { font-size: 13px; color: var(--soft); }
+  details {
+    background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+    padding: 0 22px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(62,58,53,.02);
+  }
+  details[open] { border-color: color-mix(in srgb, var(--mint) 38%, var(--line)); }
+  summary {
+    list-style: none; cursor: pointer; padding: 18px 0; font-size: 15.5px; font-weight: 650;
+    display: flex; align-items: center; gap: 10px;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; margin-left: auto; color: var(--mint-deep); font-size: 20px; font-weight: 600; line-height: 1; transition: transform .18s ease; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details .body { padding: 0 0 20px; color: var(--soft); font-size: 14px; }
+  details .body p + p { margin-top: 8px; }
+  details .body ul { margin: 8px 0 0 18px; }
+  details .body li { margin-bottom: 4px; }
+  details .body b { color: var(--ink); font-weight: 650; }
+
+  .tip {
+    margin-top: 26px; background: var(--mint-soft); border: 1px solid color-mix(in srgb, var(--mint) 24%, transparent);
+    border-radius: 18px; padding: 20px 22px; font-size: 13.5px; color: var(--soft);
+  }
+  .tip b { color: var(--ink); }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0 44px; margin-top: 52px; }
+  footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  .foot-links { display: flex; gap: 18px; font-size: 13px; color: var(--soft); }
+  .copyright { font-size: 12.5px; color: var(--soft); }
+
+  @media (max-width: 680px) {
+    .wrap { width: calc(100% - 32px); }
+    .contact { grid-template-columns: 1fr; }
+    .nav-links { gap: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icon.png" alt="轻语记账图标"><span>轻语记账</span></a>
+    <nav class="nav-links">
+      <a href="index.html">首页</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="terms.html">用户协议</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="page-head">
+    <div class="eyebrow">Support · 技术支持</div>
+    <h1>有什么可以帮到你？</h1>
+    <p>先看看下面的常见问题。如果没有解决，欢迎给轻宝留言——请附上机型和复现步骤，会更快定位问题。</p>
+  </div>
+
+  <div class="contact">
+    <div class="card">
+      <h2>给轻宝留言</h2>
+      <p>通过 GitHub Issues 提交问题或功能建议。也可以直接在 App Store 的产品页留言。</p>
+      <a class="btn" href="https://github.com/aerospaziale/qingyu-jizhang/issues" target="_blank" rel="noopener">提交反馈 →</a>
+    </div>
+    <div class="card">
+      <h2>当前版本</h2>
+      <p class="meta">版本 <b>1.0</b>（Build 2）<br>系统要求 <b>iOS 17 及以上</b><br>设备支持 <b>iPhone</b></p>
+    </div>
+  </div>
+
+  <div class="faq-head">
+    <h2>常见问题</h2>
+    <span>点击问题展开答案</span>
+  </div>
+
+  <details>
+    <summary>语音记账没有反应 / 听不到我说话？</summary>
+    <div class="body">
+      <p>首次使用语音功能时，系统会请求「麦克风」和「语音识别」权限，请选择允许。如果之前拒绝过，可以到 <b>iPhone 设置 → 轻语记账</b> 中重新打开。</p>
+      <p>录音时尽量靠近话筒、在安静环境说话；说完停顿一下，App 会自动结束录音并识别。若设备暂时无法使用语音识别，也可以直接用键盘输入记账。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>自动记账怎么设置？</summary>
+    <div class="body">
+      <p>在 App 内打开 <b>我的 → 自动记账</b>，按页面上的三步教程操作：</p>
+      <ul>
+        <li>第 1 步：在「快捷指令」App 新建指令，依次添加「截屏」和「自动记账」；</li>
+        <li>第 2 步：到 <b>设置 → 操作按钮 → 快捷指令</b>，选择刚创建的指令；</li>
+        <li>第 3 步：付完钱按一下侧边按钮，截图会在本机识别并自动入账。</li>
+      </ul>
+      <p>也可以直接用快捷指令、灵动岛或复制账单截图后触发。识别只在本机进行，截图副本在识别完成后立即删除。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>我的账单数据会上传到云端吗？</summary>
+    <div class="body">
+      <p>不会。轻语记账没有账号体系，也没有云端服务器。账单、分类、预算、聊天记录和经营数据都保存在你的设备本地，我们不上传、不收集、不出售。</p>
+      <p>只有三种由 Apple 系统提供的联网行为可能发生：App Store 购买与恢复购买、添加地点时使用 Apple 地图把坐标换成店名、以及设备不支持端上语音识别时由 Apple 系统语音服务处理。除此之外，账单数据全程不经过网络。</p>
+      <p>完整说明见 <a href="privacy.html">隐私政策</a>。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>换手机或重装 App，数据还在吗？</summary>
+    <div class="body">
+      <p>数据保存在本机，卸载 App 会一并删除。换机前请在 <b>我的 → 备份与导出</b> 生成一份 JSON 完整备份（或加密备份），保存到「文件」App 或通过 AirDrop 发送到新设备，再在新手机上导入即可。</p>
+      <p>如果你开启了 iCloud 设备备份，App 数据也会随系统备份一起备份到你的 iCloud 账户（由 Apple 加密，我们无法访问）。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>如何导入微信 / 支付宝 / 银行账单？</summary>
+    <div class="body">
+      <p>先在微信、支付宝或银行 App 中导出账单文件（CSV / XLSX / TXT），然后打开轻语记账，进入 <b>我的 → 账单导入</b>，选择文件即可。解析全程在本机完成，不上传文件。</p>
+      <p>账单导入属于会员功能；具体支持的文件格式以导入页面的说明为准。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>会员怎么恢复购买 / 怎么取消订阅？</summary>
+    <div class="body">
+      <p><b>恢复购买：</b>打开轻语记账的会员升级页，点击「恢复购买」。会员资格跟随你的 Apple ID。</p>
+      <p><b>取消订阅：</b>打开 iPhone 的 <b>设置 → Apple ID → 订阅 → 轻语记账</b>，选择取消。取消后，当前订阅周期结束前仍可使用会员功能。终身买断为一次性付费，不自动续费。</p>
+      <p>会员功能全部在本机运行，不收集、不上传任何账单数据。详见 <a href="terms.html">用户协议</a>。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>App 需要哪些权限？可以关闭吗？</summary>
+    <div class="body">
+      <p>只在你主动使用对应功能时请求权限：</p>
+      <ul>
+        <li><b>麦克风 / 语音识别</b>：语音记账和轻聊按住说话；</li>
+        <li><b>相机</b>：拍摄小票、账单照片或扫描商品；</li>
+        <li><b>相册</b>：选择账单照片、读取你指定的截图；</li>
+        <li><b>定位</b>：为账单添加消费地点；</li>
+        <li><b>面容 ID</b>：解锁隐私保险柜、应用锁和经营锁；</li>
+        <li><b>通知</b>：预算提醒与记账完成提示。</li>
+      </ul>
+      <p>所有权限都可以在系统设置中随时关闭；关闭后仅对应功能不可用，其他功能与本地数据不受影响。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>支持哪些设备？</summary>
+    <div class="body">
+      <p>轻语记账支持 <b>iPhone</b>，系统要求 <b>iOS 17 及以上</b>。侧边按钮速记需要支持「操作按钮」的机型；灵动岛相关提示需要支持灵动岛的机型。不支持的设备仍可正常使用语音、聊天、截图自动记账等核心功能。</p>
+    </div>
+  </details>
+
+  <div class="tip">
+    <b>反馈小贴士：</b>请附上 iPhone 型号、iOS 版本、App 版本和复现步骤。为了你的隐私，请不要在公开反馈中填写真实姓名、卡号、账单金额等敏感信息。
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="index.html">首页</a>
+      <a href="privacy.html">隐私政策</a>
+      <a href="terms.html">用户协议</a>
+    </div>
+    <div class="copyright">© 2026 轻语记账</div>
+  </div>
+</footer>
+
+</body>
+</html>
