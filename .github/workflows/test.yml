@@ -1,0 +1,11 @@
+name: connectivity-test
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
