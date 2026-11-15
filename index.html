@@ -102,6 +102,8 @@
   .btn:hover { transform: translateY(-1px); opacity: .92; }
   .btn-primary { background: linear-gradient(135deg, var(--mint), var(--mint-deep)); color: #fff; box-shadow: 0 10px 24px color-mix(in srgb, var(--mint) 30%, transparent); }
   .btn-ghost { background: var(--card); border-color: var(--line); color: var(--ink); }
+  .btn-soon { background: var(--card); border-color: var(--line); color: var(--soft); cursor: default; }
+  .btn-soon::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
   .hero-note { margin-top: 14px; font-size: 13px; color: var(--soft); }
 
   .hero-visual { position: relative; display: flex; align-items: center; justify-content: center; min-height: 430px; }
@@ -232,8 +234,9 @@
   @media (max-width: 900px) {
     .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
     .hero { padding-top: 50px; }
-    .hero-visual { min-height: 360px; }
-    .app-icon { margin-bottom: 150px; margin-right: 170px; }
+    .hero-visual { min-height: 380px; }
+    .app-icon { position: absolute; left: 7%; top: 9%; margin: 0; width: 96px; height: 96px; border-radius: 23px; }
+    .mascot { width: min(300px, 62vw); }
     .grid-3, .grid-6, .plans { grid-template-columns: 1fr 1fr; }
     .split { grid-template-columns: 1fr; gap: 34px; }
     .privacy-card { grid-template-columns: 1fr; }
@@ -244,8 +247,9 @@
     .nav-links a:not(.nav-cta) { display: none; }
     .grid-3, .grid-6, .plans { grid-template-columns: 1fr; }
     .hero-visual { min-height: 330px; }
-    .app-icon { width: 88px; height: 88px; border-radius: 21px; margin-bottom: 136px; margin-right: 128px; }
-    .bubble { right: 0; bottom: 10px; max-width: 190px; font-size: 13px; }
+    .app-icon { width: 78px; height: 78px; border-radius: 19px; left: 2%; top: 8%; }
+    .mascot { width: min(260px, 68vw); }
+    .bubble { right: 0; bottom: 4px; max-width: 175px; font-size: 12.5px; padding: 11px 13px; }
     section { padding: 46px 0; }
     .card { padding: 23px; }
     .cta-card { padding: 26px; }
@@ -279,8 +283,8 @@
           <span class="tag"><b>无广告</b> · 专心记账</span>
         </div>
         <div class="hero-actions">
-          <span class="btn btn-primary">App Store 即将上架</span>
-          <a class="btn btn-ghost" href="support.html">查看使用帮助</a>
+          <a class="btn btn-primary" href="support.html">查看使用帮助</a>
+          <span class="btn btn-soon">App Store 即将上架</span>
         </div>
         <div class="hero-note">支持 iPhone · iOS 17 及以上 · 免费可用</div>
       </div>
