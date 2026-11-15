@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>轻语记账用户协议</title>
+<style>
+  :root {
+    --bg: #FFF7F1;
+    --card: #FFFFFF;
+    --ink: #4A4A4A;
+    --soft: #8A8A8A;
+    --mint: #6FC9A9;
+    --mint-deep: #3FA47E;
+    --line: #EFE6DC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141E19;
+      --card: #22302A;
+      --ink: #EDE7DC;
+      --soft: #8B958D;
+      --mint: #8AD8BC;
+      --mint-deep: #6FBFA0;
+      --line: #2C3A34;
+    }
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-text-size-adjust: 100%;
+  }
+  html[data-lang="zh"] .en { display: none !important; }
+  html[data-lang="en"] .zh { display: none !important; }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 28px 20px 48px; }
+  h1 { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .date { font-size: 13px; color: var(--soft); margin-bottom: 24px; }
+  .intro {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+  .intro b { color: var(--mint-deep); }
+  h2 {
+    font-size: 17px;
+    font-weight: 650;
+    margin: 26px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  h2::before {
+    content: "";
+    width: 4px;
+    height: 16px;
+    border-radius: 2px;
+    background: var(--mint-deep);
+    flex-shrink: 0;
+  }
+  p { font-size: 14px; margin-bottom: 10px; }
+  ul { margin: 0 0 10px 4px; list-style: none; }
+  li {
+    font-size: 14px;
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+  }
+  li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 9px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--mint);
+  }
+  li b { color: var(--mint-deep); }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .card .t { font-size: 14px; font-weight: 650; margin-bottom: 3px; }
+  .card .d { font-size: 13px; color: var(--soft); }
+  .foot {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--soft);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="zh">轻语记账用户协议</h1>
+  <h1 class="en">Chat Ledger Terms of Use</h1>
+  <div class="date zh">生效日期：2026 年 9 月 19 日 · 最后更新：2026 年 9 月 19 日</div>
+  <div class="date en">Effective Sep 19, 2026 · Last updated Sep 19, 2026</div>
+
+  <div class="intro zh">
+    欢迎使用轻语记账（下称「本应用」）。本协议是你与本应用开发者之间就使用本应用达成的约定。
+    <b>下载、安装或使用本应用，即表示你已阅读并同意本协议</b>。若你不同意，请不要使用本应用。
+    本应用的数据处理方式另见《隐私协议》。
+  </div>
+  <div class="intro en">
+    Welcome to Chat Ledger (the "App"). These terms are an agreement between you and the App's developer
+    regarding your use of the App. <b>By downloading, installing, or using the App, you confirm that you
+    have read and agree to these terms.</b> If you do not agree, please do not use the App. How the App
+    handles your data is described separately in our Privacy Policy.
+  </div>
+
+  <h2 class="zh">1. 服务内容</h2>
+  <h2 class="en">1. The Service</h2>
+  <p class="zh">本应用是一款纯本地记账工具，提供手动记账、语音记账、小票识别、自动记账（截图识别）、报表统计、预算管理、账本与分类管理、隐私保险柜、应用锁、经营模式等功能。全部数据在本机处理与保存，本应用不提供云同步服务。</p>
+  <p class="en">The App is a fully on-device bookkeeping tool offering manual entry, voice entry, receipt recognition, auto-entry from screenshots, reports, budgeting, ledger and category management, a private vault, app lock, and business mode. All data is processed and stored on your device; the App provides no cloud sync service.</p>
+  <p class="zh">本应用按「现状」提供。我们可能在不另行通知的情况下调整、增加或下线某个功能；涉及你已购买会员权益的重大调整，我们会提前在版本说明中告知。</p>
+  <p class="en">The App is provided "as is". We may adjust, add, or retire individual features without separate notice; for any material change affecting membership benefits you have already purchased, we will say so in the release notes in advance.</p>
+
+  <h2 class="zh">2. 会员与订阅</h2>
+  <h2 class="en">2. Membership and Subscriptions</h2>
+  <div class="card">
+    <div class="t zh">月度会员</div><div class="t en">Monthly</div>
+    <div class="d zh">按订阅周期自动续费，可随时取消；取消后在当前订阅期结束时停止续订，已付周期不退款。</div>
+    <div class="d en">Auto-renews each subscription period and can be cancelled at any time. After cancelling, renewal stops at the end of the current paid period; the paid period is not refunded.</div>
+  </div>
+  <div class="card">
+    <div class="t zh">年度会员</div><div class="t en">Yearly</div>
+    <div class="d zh">同上，按年自动续费。</div>
+    <div class="d en">As above, auto-renewing annually.</div>
+  </div>
+  <div class="card">
+    <div class="t zh">终身买断</div><div class="t en">Lifetime</div>
+    <div class="d zh">一次性付款，永久解锁全部会员功能，不自动续费。</div>
+    <div class="d en">One-time payment, permanently unlocks all membership features, no auto-renewal.</div>
+  </div>
+  <ul class="zh">
+    <li>实际价格以 App Store 购买页面显示为准；价格可能因地区、税率与促销而不同。</li>
+    <li>扣费由 Apple 完成：确认购买时从你的 Apple ID 扣款；订阅到期前 24 小时内自动扣取下一周期费用。</li>
+    <li>取消路径：系统设置 → Apple ID → 订阅 → 轻语记账。取消后仍可使用至当前订阅期结束。</li>
+    <li>退款由 Apple 处理，请通过 App Store「报告问题」提出，我们无权直接为你退款。</li>
+    <li>会员跟随你的 Apple ID，可在「会员升级」页点「恢复购买」找回。</li>
+    <li>会员为个人、不可转让的使用许可，仅限你在自己的 Apple 设备上使用。</li>
+  </ul>
+  <ul class="en">
+    <li>The actual price is the one shown on the App Store purchase sheet; prices may differ by region, tax, and promotion.</li>
+    <li>Billing is handled by Apple: your Apple ID is charged when you confirm the purchase, and the next period is charged within 24 hours before the current period ends.</li>
+    <li>To cancel: Settings → Apple ID → Subscriptions → Chat Ledger. You keep access until the current period ends.</li>
+    <li>Refunds are handled by Apple through "Report a Problem" on the App Store; we cannot issue refunds directly.</li>
+    <li>Membership follows your Apple ID and can be restored with "Restore Purchases" on the membership page.</li>
+    <li>Membership is a personal, non-transferable licence for use on your own Apple devices.</li>
+  </ul>
+
+  <h2 class="zh">3. 你的责任</h2>
+  <h2 class="en">3. Your Responsibilities</h2>
+  <ul class="zh">
+    <li><b>数据备份</b>：数据保存在你的设备上，<b>请自行定期导出备份</b>。设备丢失、损坏、卸载 App 或使用「清除数据」都会导致数据不可恢复，我们无法帮你找回。</li>
+    <li>仅在你拥有合法权利的设备与数据上使用本应用（例如识别属于自己的账单，而非他人的账户信息）。</li>
+    <li>不得对本应用进行反向工程、破解、二次分发或用于违法用途。</li>
+    <li>加密备份的密钥仅保存在本机钥匙串，换机或重装后无法解密，请自行妥善保管导出文件。</li>
+  </ul>
+  <ul class="en">
+    <li><b>Back up your data</b>: your data lives on your device — <b>please export backups regularly</b>. A lost or damaged device, uninstalling the App, or using "Clear Data" makes data unrecoverable, and we cannot restore it for you.</li>
+    <li>Use the App only with devices and data you have the right to use (for example, recognizing your own bills rather than someone else's account information).</li>
+    <li>Do not reverse engineer, crack, redistribute, or use the App for unlawful purposes.</li>
+    <li>The key for encrypted backups exists only in this device's Keychain and cannot be decrypted after switching devices or reinstalling — keep your exported files safe.</li>
+  </ul>
+
+  <h2 class="zh">4. 知识产权</h2>
+  <h2 class="en">4. Intellectual Property</h2>
+  <p class="zh">本应用的界面、图标、插画、文案与程序代码的知识产权归开发者所有。你的账单数据、照片与自定义内容归你所有，我们不会访问、不会使用、也不会主张任何权利。</p>
+  <p class="en">The App's interface, icons, illustrations, copy, and code belong to the developer. Your transactions, photos, and custom content belong to you — we never access or use them and claim no rights over them.</p>
+
+  <h2 class="zh">5. 免责与责任限制</h2>
+  <h2 class="en">5. Disclaimer and Limitation of Liability</h2>
+  <p class="zh">本应用是记账辅助工具，识别与统计结果可能存在误差（例如小票识别金额有误、语音听写偏差），<b>请以你的实际账单为准</b>，并在重要决策前自行核对。本应用不提供任何形式的财务、税务或法律建议。</p>
+  <p class="en">The App is a bookkeeping aid: recognition and statistics may contain errors (for example, a misread receipt amount or a misheard voice entry). <b>Your actual bills are authoritative</b> — verify before relying on the numbers for anything important. The App provides no financial, tax, or legal advice.</p>
+  <p class="zh">在法律允许的最大范围内，我们不对因使用或无法使用本应用而产生的间接损失、数据丢失或利润损失承担责任。若相关法律不允许上述限制，则以法律规定的范围为限。</p>
+  <p class="en">To the maximum extent permitted by law, we are not liable for indirect losses, data loss, or lost profits arising from the use of, or inability to use, the App. Where such limits are not permitted by applicable law, they apply only to the extent the law allows.</p>
+
+  <h2 class="zh">6. Apple 相关条款</h2>
+  <h2 class="en">6. Apple-Specific Terms</h2>
+  <ul class="zh">
+    <li>本协议仅在你与开发者之间成立，<b>Apple 不是本协议的一方</b>，也不对本应用及其内容承担任何责任。</li>
+    <li>Apple 无义务为本应用提供维护与支持服务。</li>
+    <li>若本应用不符合任何适用保证，你可通知 Apple，Apple 将退还该应用的购买价款（如有）；在法律允许的最大范围内，Apple 不承担其他保证义务。</li>
+    <li>你须自行确认本应用不违反你所处国家或地区的法律。</li>
+    <li>Apple 及其子公司是本协议的第三方受益人，有权对你强制执行本协议。</li>
+  </ul>
+  <ul class="en">
+    <li>These terms are between you and the developer only; <b>Apple is not a party to them</b> and bears no responsibility for the App or its content.</li>
+    <li>Apple has no obligation to provide maintenance or support for the App.</li>
+    <li>If the App fails to conform to any applicable warranty, you may notify Apple, and Apple will refund the purchase price (if any) for the App; to the maximum extent permitted by law, Apple has no other warranty obligation.</li>
+    <li>You must confirm that the App does not violate the laws of your country or region.</li>
+    <li>Apple and its subsidiaries are third-party beneficiaries of these terms and may enforce them against you.</li>
+  </ul>
+
+  <h2 class="zh">7. 协议变更与终止</h2>
+  <h2 class="en">7. Changes and Termination</h2>
+  <p class="zh">本协议随版本更新，最新版本随 App 一同发布并在本页标注日期。若你不同意变更，可停止使用并卸载本应用；已购买的会员权益不受影响。你若违反本协议，我们可在法律允许范围内终止你对本应用的使用许可。</p>
+  <p class="en">These terms are updated with App releases; the current version ships with the App and carries the date above. If you disagree with a change, you may stop using and uninstall the App; purchased membership benefits are unaffected. If you breach these terms, we may terminate your licence to use the App to the extent the law allows.</p>
+
+  <h2 class="zh">8. 适用法律</h2>
+  <h2 class="en">8. Governing Law</h2>
+  <p class="zh">本协议适用中华人民共和国大陆地区法律（不含冲突法规则）。因本协议产生的争议，双方应友好协商解决。</p>
+  <p class="en">These terms are governed by the laws of the People's Republic of China (mainland), excluding conflict-of-law rules. Any dispute arising from these terms shall first be addressed through good-faith negotiation.</p>
+
+  <h2 class="zh">9. 联系我们</h2>
+  <h2 class="en">9. Contact Us</h2>
+  <p class="zh">对本协议有任何疑问，欢迎通过 App Store 页面留言联系我们。</p>
+  <p class="en">If you have any question about these terms, leave us a note on our App Store page.</p>
+
+  <div class="foot zh">本协议页面随应用离线内置，无需联网即可查看。<br>轻语记账 · 按一下，说句话，账就记好 💚</div>
+  <div class="foot en">This page is bundled with the App and readable offline.<br>Chat Ledger · Tap, speak, and it's recorded 💚</div>
+</div>
+<script>
+  window.qySetLang = function (lang) {
+    document.documentElement.setAttribute('data-lang', lang === 'en' ? 'en' : 'zh');
+    document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'zh-CN');
+  };
+  (function () {
+    var l = (navigator.language || 'zh').toLowerCase();
+    window.qySetLang(l.indexOf('zh') === 0 ? 'zh' : 'en');
+  })();
+</script>
+</body>
+</html>
